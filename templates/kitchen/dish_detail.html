@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <h1>
+    {{ dish.name }}
+  </h1>
+  <p><strong>Price:</strong> {{ dish.price }}</p>
+  <p><strong>Dish type:</strong> {{ dish.dish_type.name }}</p>
+  <p><strong>Description:</strong> {{ dish.description }}</p>
+
+  <div>
+    <h3>Cooks</h3>
+
+    {% for cook in dish.cooks.all %}
+      <hr>
+      <p>
+        <strong>Full name:</strong>
+        {{ cook.first_name }} {{ cook.last_name }}
+        {% if cook.years_of_experience %}({{ cook.years_of_experience }}){% endif %}
+      </p>
+    {% empty %}
+      <p>No cooks...</p>
+    {% endfor %}
+  </div>
+{% endblock %}
