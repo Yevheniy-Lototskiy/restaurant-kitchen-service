@@ -2,6 +2,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 from django.views import generic
 
+from kitchen_service.forms import CookCreationForm
 from kitchen_service.models import Dish, Cook, DishType
 
 
@@ -24,6 +25,12 @@ class CookListView(generic.ListView):
 class CookDetailView(generic.DetailView):
     model = Cook
     template_name = "kitchen/cook_detail.html"
+
+
+class CookCreateView(generic.CreateView):
+    model = Cook
+    form_class = CookCreationForm
+    template_name = "kitchen/cook_form.html"
 
 
 class DishListView(generic.ListView):
