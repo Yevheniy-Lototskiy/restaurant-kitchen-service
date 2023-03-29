@@ -1,5 +1,6 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
+from django.views import generic
 
 from kitchen_service.models import Dish, Cook, DishType
 
@@ -14,3 +15,8 @@ def index(request):
     }
 
     return render(request, "kitchen/index.html", context=context)
+
+
+class DishListView(generic.ListView):
+    model = Dish
+    template_name = "kitchen/dish_list.html"
