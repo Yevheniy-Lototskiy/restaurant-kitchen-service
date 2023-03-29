@@ -37,6 +37,7 @@ class CookCreateView(generic.CreateView):
 class CookUpdateView(generic.UpdateView):
     model = Cook
     form_class = CookUpdateForm
+    template_name = "kitchen/cook_form.html"
     success_url = reverse_lazy("kitchen:cook-list")
 
 
