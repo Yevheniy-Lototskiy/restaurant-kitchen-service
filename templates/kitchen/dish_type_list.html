@@ -14,6 +14,7 @@
       <tr>
         <th>Name</th>
         <th>Update</th>
+        <th>Delete</th>
       </tr>
 
       {% for dish_type in dish_type_list %}
@@ -24,6 +25,11 @@
           <td>
             <a href="{% url 'kitchen:dish-type-update' pk=dish_type.id %}">
                 Update
+            </a>
+          </td>
+          <td>
+            <a style="color: red" href="{% url 'kitchen:dish-type-delete' pk=dish_type.id %}">
+              Delete
             </a>
           </td>
         </tr>
