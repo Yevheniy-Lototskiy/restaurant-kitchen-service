@@ -1,21 +1,30 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
+{% load crispy_forms_filters %}
 
 {% block content %}
   <h1>
-    Dish List
-    <a href="{% url 'kitchen:dish-form' %}">+</a>
+    Dish list
+    <a href="{% url 'kitchen:dish-create' %}" class="btn btn-primary link-to-page">
+      Create
+    </a>
   </h1>
 
   {% if dish_list %}
-    <ul>
+    <table class="table">
+      <tr>
+        <th>Name</th>
+        <th>Type of dish</th>
+        <th>Price</th>
+      </tr>
       {% for dish in dish_list %}
-        <li>
-          <a href="{% url 'kitchen:dish-detail' pk=dish.id %}">{{ dish.name }}</a>
-          (Price: {{ dish.price }}, Dish type: {{ dish.dish_type.name }})
-        </li>
+        <tr>
+          <td><a href="{% url 'kitchen:dish-detail' pk=dish.id %}">{{ dish.name }}</a></td>
+          <td>{{ dish.dish_type.name }}</td>
+          <td>{{ dish.price }}</td>
+        </tr>
       {% endfor %}
-    </ul>
-  {% else %}
-    <p>There are no dishes in assortment</p>
-  {% endif %}
+    </table>
+    {% else %}
+      <p>There are no dishes in the assortment.</p>
+    {% endif %}
 {% endblock %}
