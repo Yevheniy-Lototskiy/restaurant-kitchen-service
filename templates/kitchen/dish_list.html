@@ -10,7 +10,7 @@
       {% for dish in dish_list %}
         <li>
           {{ dish.name }} Description: {{ dish.description }}
-           (price: {{ dish.price }}, format: {{ dish.dish_type.name }})
+           (Price: {{ dish.price }}, Dish type: {{ dish.dish_type.name }})
         </li>
       {% endfor %}
     </ul>

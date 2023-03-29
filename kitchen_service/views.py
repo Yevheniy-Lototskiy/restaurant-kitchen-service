@@ -7,7 +7,6 @@ from kitchen_service.models import Dish, Cook, DishType
 
 @login_required
 def index(request):
-
     context = {
         "num_dishes": Dish.objects.count(),
         "num_cooks": Cook.objects.count(),
@@ -20,3 +19,9 @@ def index(request):
 class DishListView(generic.ListView):
     model = Dish
     template_name = "kitchen/dish_list.html"
+
+
+class DishTypeListView(generic.ListView):
+    model = DishType
+    template_name = "kitchen/dish_type_list.html"
+    context_object_name = "dish_type_list"
