@@ -3,6 +3,7 @@
 {% block content %}
   <h1>
     Dish Type List
+    <a href="{% url 'kitchen:dish-type-form' %}">+</a>
   </h1>
   {% if dish_type_list %}
     <table>
