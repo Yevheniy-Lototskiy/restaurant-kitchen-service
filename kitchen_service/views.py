@@ -10,7 +10,7 @@ def index(request):
     context = {
         "num_dishes": Dish.objects.count(),
         "num_cooks": Cook.objects.count(),
-        "num_dish_types": DishType.objects.all()
+        "num_dish_types": DishType.objects.count()
     }
 
     return render(request, "kitchen/index.html", context=context)
