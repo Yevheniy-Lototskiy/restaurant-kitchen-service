@@ -21,9 +21,11 @@
     {% for cook in dish.cooks.all %}
       <hr>
       <p>
-        <strong>Full name:</strong>
-        {{ cook.first_name }} {{ cook.last_name }}
-        {% if cook.years_of_experience %}({{ cook.years_of_experience }}){% endif %}
+        <strong>{{ cook.first_name }} {{ cook.last_name }}</strong>
+        {% if cook.years_of_experience %}
+          ({{ cook.years_of_experience }}
+           year{{ cook.years_of_experience|pluralize }} of experience)
+        {% endif %}
       </p>
     {% empty %}
       <p>No cooks...</p>
