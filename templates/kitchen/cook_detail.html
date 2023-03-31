@@ -1,33 +1,79 @@
 {% extends "base.html" %}
 
+{% block title %} {{ cook.first_name }} {{ cook.last_name }} {% endblock %}
+
+{% block body_class %} blog-author {% endblock %}
+
+{% block stylesheets %}{% endblock stylesheets %}
+
 {% block content %}
-  <h1>
-    Username: {{ cook.username }}
 
-    {% if user.id == cook.id %}
-      <a href="{% url 'kitchen:cook-update' pk=cook.id %}" class="btn btn-secondary link-to-page">
-        Update
-      </a>
-      <a href="{% url 'kitchen:cook-delete' pk=cook.id %}" class="btn btn-danger link-to-page">
-        Delete
-      </a>
-    {% endif %}
-  </h1>
+  {% include 'includes/navigation.html' %}
 
-  <p><strong>First name:</strong> {{ cook.first_name }}</p>
-  <p><strong>Last name:</strong> {{ cook.last_name }}</p>
-  <p><strong>Years of experience:</strong> {{ cook.years_of_experience }}</p>
+  <header>
+    <div class="page-header min-height-400" style="background-image: url('{{ ASSETS_ROOT }}/img/bg6.jpg');"
+         loading="lazy">
+      <span class="mask bg-gradient-dark opacity-8"></span>
+    </div>
+  </header>
 
-  <div class="ml-3">
-    <h4>Dishes</h4>
+  <div class="card card-body blur shadow-blur mx-3 mx-md-4 mt-n6 mb-4">
 
-    {% for dish in cook.dishes.all %}
-        <hr>
-        <p><strong>Name:</strong> {{ dish.name }}</p>
-        <p><strong>Type of dish:</strong> {{ dish.dish_type.name }}</p>
-        <p><strong>Description:</strong> {{ dish.description }}</p>
-    {% empty %}
-      <p>No dishes!</p>
-    {% endfor %}
+    <section class="py-sm-7 py-5 position-relative">
+      <div class="col-lg-7 col-md-7 z-index-2 position-relative px-md-2 px-sm-2 mx-md-auto">
+        <div class="col-lg-8 text-center mx-auto my-auto">
+          <h1 class="mb-0">{{ cook.first_name }} {{ cook.last_name }}</h1>
+          <p class="col-lg-12 text-center mx-auto my-auto">
+            {{ cook.years_of_experience }} year{{ cook.years_of_experience|pluralize }} of experience
+          </p>
+          <div>
+            <button class="btn dropdown-toggle bg-gradient-warning" type="button" id="dropdownMenuButton"
+                    data-bs-toggle="dropdown" aria-expanded="false">
+              Actions
+            </button>
+            <ul class="dropdown-menu px-2 py-3" aria-labelledby="dropdownMenuButton">
+              <li>
+                <a class="dropdown-item border-radius-md bg-gradient-faded-light"
+                   href="{% url 'kitchen:cook-update' pk=cook.id %}">
+                  Update
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item border-radius-md bg-gradient-faded-light"
+                   href="{% url 'kitchen:cook-delete' pk=cook.id %}">
+                  Delete
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-3">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-6">
+            <h3 class="mb-5">Check my dishes</h3>
+          </div>
+        </div>
+        <div class="col">
+          {% for dish in cook.dishes.all %}
+            <div class="card-body px-0">
+              <h5>
+                <a href="{% url 'kitchen:dish-detail' pk=dish.id %}"
+                   class="text-dark font-weight-bold">{{ dish.name }}</a>
+              </h5>
+              <p>
+                {{ dish.description }}
+              </p>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+    </section>
   </div>
-{% endblock %}
+
+{% endblock content %}
+
+{% block javascripts %}{% endblock javascripts %}
