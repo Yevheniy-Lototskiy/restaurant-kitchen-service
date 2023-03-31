@@ -65,6 +65,7 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                "kitchen_service.context_processors.cfg_assets_root",
             ],
         },
     },
@@ -107,6 +108,7 @@ AUTH_PASSWORD_VALIDATORS = [
 AUTH_USER_MODEL = "kitchen_service.Cook"
 
 LOGIN_REDIRECT_URL = ""
+LOGOUT_REDIRECT_URL = "/"
 
 
 # Internationalization
@@ -126,7 +128,13 @@ USE_TZ = True
 
 STATIC_URL = "static/"
 
+STATICFILES_DIRS = (BASE_DIR / "static",)
+
+STATIC_ROOT = BASE_DIR / "staticfiles"
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+ASSETS_ROOT = "/static/assets"
