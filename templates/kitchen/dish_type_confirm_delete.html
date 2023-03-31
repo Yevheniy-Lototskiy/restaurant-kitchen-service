@@ -1,8 +1,10 @@
 {% extends "base.html" %}
 
+{% block title %} Delete cuisine {% endblock %}
+
 {% block content %}
-  <h1>Delete type of dish?</h1>
-  <form action="" method="post">
+  <h1 class="text-center">Delete dish?</h1>
+  <form action="" method="post" class="text-center">
     {% csrf_token %}
 
     <input type="submit" value="Yes" class="btn btn-danger">
@@ -11,3 +13,5 @@
     </a>
   </form>
 {% endblock %}
+
+{% block footer %}{% endblock %}
