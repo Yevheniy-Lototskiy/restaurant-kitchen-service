@@ -4,7 +4,7 @@ Django project for managing cookers and dishes in Kitchen Service
 
 ## Check it out!
 
-[Kitchen Service project deployed](PASTE_LINK_HERE)
+[Kitchen Service project deployed to Render](https://kitchen-service-hrsy.onrender.com)
 
 ## Installation
 
