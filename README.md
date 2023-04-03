@@ -6,6 +6,12 @@ Django project for managing cookers and dishes in Kitchen Service
 
 [Kitchen Service project deployed to Render](https://kitchen-service-hrsy.onrender.com)
 
+Use it for login:
+
+Login: user
+
+Password: user1234
+
 ## Installation
 
 ```shell
