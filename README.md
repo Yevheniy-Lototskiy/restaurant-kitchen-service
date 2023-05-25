@@ -18,7 +18,9 @@ Password: user1234
 git clone https://github.com/Yevheniy-Lototskiy/restaurant-kitchen-service.git
 cd kitchen
 python -m venv venv
-sourse venv\Scripts\activate
+venv\Scripts\activate (on Windows)
+source venv/bin/activate (on macOS)
+python manage.py migrate
 python manage.py runserver
 ```
 
@@ -27,3 +29,7 @@ python manage.py runserver
 * Authentication functionality for Cooker/User
 * Managing dishes cookers & cuisines directly from interface
 * Powerful admin panel for advanced managing
+
+## Screenshot
+
+![homepage](screenshots/kitchen-service-home-page.png)
